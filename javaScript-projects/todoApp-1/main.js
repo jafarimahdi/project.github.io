@@ -16,28 +16,30 @@ class item {
         this.createItem(name);
     }
     createItem(name) {
-        // * create a div
+        // 1- create a div for list
         var itemBox = document.createElement("div");
         itemBox.classList.add("item");
 
-        // * creat the tag inside the div
+        // 2- creat the input text for  inside the div
         var input = document.createElement("input");
         input.type = "text";
         input.disabled = true;
         input.value = name;
         input.classList.add("item_input");
 
+        // 3- create the edit button for the each item in the list
         var edit = document.createElement("button");
         edit.classList.add("edit");
         edit.innerHTML = "Edit";
         edit.addEventListener("click", () => this.edit(input, name));
 
+        // 4- create the Remove Button for the each item in the list
         var remove = document.createElement("button");
         remove.classList.add("remove");
         remove.innerHTML = "Remove";
         remove.addEventListener("click", () => this.remove(itemBox, name));
 
-        // * send the tags inside the container class
+        // 5- send the items in list inside the container class
         container.appendChild(itemBox);
 
         itemBox.appendChild(input);
@@ -45,8 +47,15 @@ class item {
         itemBox.appendChild(remove);
     }
 
+    // 6- set the edit button for change the value of items
+
+        // 1 way to show the user it possible to change the text field
+        // 2  after edit the text must be back as normal item in list 
+
     edit(input, name) {
-        if (input.disabled == true) {
+        
+        input.classList.add('editText');
+        if (input.disabled) {
             input.disabled = !input.disabled;
         } else {
             input.disabled = !input.disabled;
@@ -54,6 +63,7 @@ class item {
             todos[indexof] = input.value;
             window.localStorage.setItem("todos", JSON.stringify(todos));
         }
+        
     }
 
     remove(itemBox, name) {
@@ -81,7 +91,8 @@ function check() {
 }
 
 for (let v = 0; v < todos.length; v++) {
-    new item(todos(v));
+    new item(todos[v]);
 }
+
 
 new item("sport");
