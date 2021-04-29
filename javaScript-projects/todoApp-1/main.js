@@ -20,7 +20,7 @@ class item {
         var itemBox = document.createElement("div");
         itemBox.classList.add("item");
 
-        // 2- creat the input text for  inside the div
+        // 2- creat the input text for inside the div
         var input = document.createElement("input");
         input.type = "text";
         input.disabled = true;
@@ -49,12 +49,11 @@ class item {
 
     // 6- set the edit button for change the value of items
 
-        // 1 way to show the user it possible to change the text field
-        // 2  after edit the text must be back as normal item in list 
+    // A- way to show the user it possible to change the text field
+    // B-  after edit the text must be back as normal item in list and 'input.disable = true'
 
     edit(input, name) {
-        
-        input.classList.add('editText');
+        input.classList.add("editText");
         if (input.disabled) {
             input.disabled = !input.disabled;
         } else {
@@ -63,7 +62,6 @@ class item {
             todos[indexof] = input.value;
             window.localStorage.setItem("todos", JSON.stringify(todos));
         }
-        
     }
 
     remove(itemBox, name) {
@@ -93,6 +91,13 @@ function check() {
 for (let v = 0; v < todos.length; v++) {
     new item(todos[v]);
 }
+// -----------
+document.addEventListener("keydown", (event) => {
+    if (event.which === 13) {
+        input.disabled = true;
+        console.log('hellooo');
+    }
+    // do something
+});
 
-
-new item("sport");
+new item("new project");
