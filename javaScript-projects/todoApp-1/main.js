@@ -28,40 +28,29 @@ class item {
         input.classList.add("item_input");
 
         // 3- create the edit button for the each item in the list
-        var edit = document.createElement("button");
-        edit.classList.add("edit");
-        edit.innerHTML = "Edit";
-        edit.addEventListener("click", () => this.edit(input, name));
+        var done = document.createElement("button");
+        done.classList.add("edit");
+        done.innerHTML = "<i class='fas fa-check-circle'></i>";
+        done.addEventListener("click", () => this.edit(input, name));
 
         // 4- create the Remove Button for the each item in the list
         var remove = document.createElement("button");
         remove.classList.add("remove");
-        remove.innerHTML = "Remove";
+        remove.innerHTML = "<i class='fas fa-trash-alt'></i>";
         remove.addEventListener("click", () => this.remove(itemBox, name));
 
         // 5- send the items in list inside the container class
         container.appendChild(itemBox);
 
         itemBox.appendChild(input);
-        itemBox.appendChild(edit);
+        itemBox.appendChild(done);
         itemBox.appendChild(remove);
     }
 
     // 6- set the edit button for change the value of items
 
-    // A- way to show the user it possible to change the text field
-    // B-  after edit the text must be back as normal item in list and 'input.disable = true'
-
-    edit(input, name) {
+    edit(input) {
         input.classList.add("editText");
-        if (input.disabled) {
-            input.disabled = !input.disabled;
-        } else {
-            input.disabled = !input.disabled;
-            let indexof = todos.indexOf(name);
-            todos[indexof] = input.value;
-            window.localStorage.setItem("todos", JSON.stringify(todos));
-        }
     }
 
     remove(itemBox, name) {
@@ -91,13 +80,5 @@ function check() {
 for (let v = 0; v < todos.length; v++) {
     new item(todos[v]);
 }
-// -----------
-document.addEventListener("keydown", (event) => {
-    if (event.which === 13) {
-        input.disabled = true;
-        console.log('hellooo');
-    }
-    // do something
-});
 
-new item("new project");
+new item("New Project");

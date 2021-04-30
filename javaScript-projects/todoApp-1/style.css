@@ -89,7 +89,7 @@ h1 {
     cursor: pointer;
 }
 .edit:hover{ 
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     transition: 0.3s;
 }
 .remove {
@@ -102,12 +102,13 @@ h1 {
     cursor: pointer;
 }
 .remove:hover{ 
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     transition: 0.3s;
     border-bottom: #f7f7f7;
     
 }
 
 .editText{
-    color:aqua;
+    color:rgb(79, 82, 82);
+    text-decoration-line: line-through;
 }
