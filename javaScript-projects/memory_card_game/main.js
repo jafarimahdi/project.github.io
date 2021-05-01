@@ -15,20 +15,31 @@ function flipCard() {
         hasFlippedCard = false;
         secondCard = this;
 
-
         // do cards match?
         if (firstCard.dataset.framework === secondCard.dataset.framework) {
             //  it's match
             firstCard.removeEventListener("click", flipCard);
             secondCard.removeEventListener("click", flipCard);
         } else {
-            // not a match  
+            // not a match
             setTimeout(() => {
-            firstCard.classList.remove("flip");
-            secondCard.classList.remove("flip");
-        },1500);
+                firstCard.classList.remove("flip");
+                secondCard.classList.remove("flip");
+            }, 500);
         }
     }
 }
+
+function resetBoard() {
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
+
+(function shuffle() {
+    cards.forEach((card) => {
+        let randomPos = Math.floor(Math.random() * 12);
+        card.style.order = randomPos;
+    });
+})();
 
 cards.forEach((card) => card.addEventListener("click", flipCard));
