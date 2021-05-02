@@ -25,7 +25,7 @@ function flipCard() {
             setTimeout(() => {
                 firstCard.classList.remove("flip");
                 secondCard.classList.remove("flip");
-            }, 500);
+            }, 400);
         }
     }
 }
